@@ -10,7 +10,7 @@
 			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 			crossorigin="anonymous"
 		/>
-		<title>Quiz Time | Form</title>
+		<title>Quiz Time</title>
 	</head>
 	<body>
 		<main>
@@ -23,15 +23,46 @@
 						</p>
 						<div class="mb-3">
 							<label for="name-input">Name<sup class="text-danger">*</sup></label>
-							<input type="text" class="form-control" id="name-input" name="name" />
+							<input
+								type="text"
+								class="form-control"
+								id="name-input"
+								name="name"
+								value="<%= name %>"
+							/>
 						</div>
 						<div class="mb-3">
+							<% if (error) { %>
 							<label for="email-input">Email<sup class="text-danger">*</sup></label>
-							<input type="text" class="form-control" id="email-input" name="email" />
+							<input
+								type="text"
+								class="form-control border-danger text-danger"
+								id="email-input"
+								name="email"
+								value="<%= email %>"
+							/>
+							<p class="text-danger"><%= errorMsg %></p>
+							<% } else { %>
+							<label for="email-input">Email<sup class="text-danger">*</sup></label>
+							<input
+								type="text"
+								class="form-control"
+								id="email-input"
+								name="email"
+								value="<%= email %>"
+							/>
+							<p><%= errorMsg %></p>
+							<% } %>
 						</div>
 						<div class="mb-3">
 							<label for="mobile-input">Mobile (Optional)</label>
-							<input type="tel" class="form-control" id="mobile-input" name="mobile" />
+							<input
+								type="tel"
+								class="form-control"
+								id="mobile-input"
+								name="mobile"
+								value="<%= mobileNo %>"
+							/>
 						</div>
 						<div class="d-grid">
 							<button class="btn btn-primary">Submit</button>

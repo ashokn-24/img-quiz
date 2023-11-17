@@ -23,7 +23,7 @@ app.set("views", __dirname + "/views");
 app.use(express.urlencoded({ extended: false, limit: "10mb" }));
 app.use(express.static(__dirname + "/public"));
 
-app.get("/", (req, res) => {
+app.get("/form", (req, res) => {
 	res.render("form");
 });
 
@@ -31,10 +31,22 @@ app.get("/questions", (req, res) => {
 	res.sendFile(__dirname + "/questions.json");
 });
 
-app.post("/", async (req, res) => {
+app.post("/form", async (req, res) => {
 	const name = req.body.name;
 	const email = req.body.email;
 	const mobileNo = req.body.mobile;
+
+	const existingUser = await User.findOne({ email });
+
+	if (existingUser) {
+		return res.render("errors/form", {
+			error: true,
+			errorMsg: "Email Id already exists",
+			name,
+			email,
+			mobileNo
+		});
+	}
 
 	const user = new User({
 		name,
@@ -49,7 +61,11 @@ app.post("/", async (req, res) => {
 		httpOnly: true
 	});
 
-	res.redirect("/quiz");
+	res.render("certificate", { username: user.name });
+});
+
+app.get("/certificate", (req, res) => {
+	res.render("certificate", { username: "Abhishek P" });
 });
 
 app.get("/quiz", (req, res) => {
