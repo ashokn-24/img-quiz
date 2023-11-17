@@ -1,8 +1,22 @@
 const express = require("express");
-const app = express();
-const { v4: uuidV4 } = require("uuid");
+const mongoose = require("mongoose");
+const { config } = require("dotenv");
 
-const USERS = [];
+if (process.env.NODE_ENV !== "production") {
+	config();
+}
+
+const app = express();
+const User = require("./model/User");
+
+(async () => {
+	try {
+		const { connection } = await mongoose.connect(process.env.DATABASE_URI);
+		console.log(`Database connected (${connection.host})`);
+	} catch (err) {
+		console.log(err);
+	}
+})();
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
@@ -13,15 +27,21 @@ app.get("/", (req, res) => {
 	res.render("form");
 });
 
-app.post("/", (req, res) => {
+app.post("/", async (req, res) => {
 	const name = req.body.name;
 	const email = req.body.email;
+	const mobileNo = req.body.mobile;
 
-	const user = { id: uuidV4(), name, email };
+	const user = new User({
+		name,
+		email,
+		mobileNo
+	});
 
-	USERS.push(user);
+	const savedUser = await user.save();
 
-	res.cookie("user", JSON.stringify(user), {
+	// TODO: Encrypt later
+	res.cookie("user", JSON.stringify(savedUser), {
 		httpOnly: true
 	});
 
@@ -29,8 +49,7 @@ app.post("/", (req, res) => {
 });
 
 app.get("/quiz", (req, res) => {
-	console.log(USERS);
-	res.send("<h1>Quiz page</h1>");
+	res.render("quiz");
 });
 
 app.listen(5000, () => {
