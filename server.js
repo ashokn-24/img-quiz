@@ -27,6 +27,10 @@ app.get("/", (req, res) => {
 	res.render("form");
 });
 
+app.get("/questions", (req, res) => {
+	res.sendFile(__dirname + "/questions.json");
+});
+
 app.post("/", async (req, res) => {
 	const name = req.body.name;
 	const email = req.body.email;
