@@ -23,6 +23,10 @@ app.set("views", __dirname + "/views");
 app.use(express.urlencoded({ extended: false, limit: "10mb" }));
 app.use(express.static(__dirname + "/public"));
 
+app.get("/", (req, res) => {
+	res.render("index");
+});
+
 app.get("/form", (req, res) => {
 	res.render("form");
 });
@@ -64,14 +68,18 @@ app.post("/form", async (req, res) => {
 	res.render("certificate", { username: user.name });
 });
 
-app.get("/certificate", (req, res) => {
-	res.render("certificate", { username: "Abhishek P" });
-});
-
 app.get("/quiz", (req, res) => {
 	res.render("quiz");
+});
+
+app.get("/certificate", (req, res) => {
+	res.render("certificate", { username: "Abhishek P" });
 });
 
 app.listen(5000, () => {
 	console.log("Server started on port 5000");
 });
+
+async function generateCertificate() {
+	//
+}
