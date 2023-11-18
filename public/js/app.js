@@ -34,11 +34,11 @@ async function getQuestions() {
 }
 
 function getGrade(a) {
-	if (a < 6) {
+	if (a <= 6) {
 		return "Nice Try";
 	}
 
-	if (a > 6 && a < 10) {
+	if (a > 6 && a <= 10) {
 		return "Good !";
 	}
 
