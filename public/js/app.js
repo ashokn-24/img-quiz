@@ -78,7 +78,10 @@ function showQuestion() {
 			img.src = answer.image;
 			img.classList.add("img-thumbnail");
 			img.classList.add("img-opt");
+			img.classList.add("d-flex");
+			img.classList.add("gap-3");
 			img.classList.add("col-lg-3");
+			// 
 
 			if (answer.correct) {
 				img.dataset.correct = "true";
