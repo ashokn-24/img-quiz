@@ -106,7 +106,7 @@
 		<div class="border-pattern">
 			<div class="content">
 				<div class="inner-content">
-					<h1>Archaeology Art Gallery</h1>
+					<h1>The Rock-cut cave Temples in Southern Tamil Nadu</h1>
 					<br />
 					<h2>Presents</h2>
 					<h3>Certificate of Appreciation</h3>
@@ -114,10 +114,10 @@
 					<p class="name"><%= username %></p>
 					<p>
 						is awarded for participating in
-						<strong>National Online Archaeology Art Exhibition 2021</strong>
+						<strong>National Archaeology Art Exhibition 2023</strong>
 					</p>
 					<h3>Held From</h3>
-					<p><strong>20.11.2023</strong> to <strong>21.11.2023</strong></p>
+					<p><strong>20.11.2023</strong> to <strong>27.11.2023</strong></p>
 					<div class="badge"></div>
 					<div class="id">sdfjfdsaf</div>
 				</div>

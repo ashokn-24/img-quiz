@@ -13,7 +13,7 @@ body {
 
 .border-pattern {
   position: relative;
-  height: 172mm;
+  height: 202mm;
   width: 267mm;
   border: 1mm solid #991B1B;
   /* http://www.heropatterns.com/ */
@@ -25,7 +25,7 @@ body {
   position: absolute;
   left: 10mm;
   top: 10mm;
-  height: 150mm;
+  height: 180mm;
   width: 245mm;
   border: 1mm solid #991B1B;
   background: white;
@@ -35,13 +35,13 @@ body {
   border: 1mm solid #991B1B;
   margin: 4mm;
   padding: 10mm;
-  height: 120mm;
+  height: 150mm;
   text-align: center;
 }
 
 h1 {
   text-transform: uppercase;
-  font-size: 32pt;
+  font-size: 24pt;
   margin: 0;
 }
 
@@ -71,8 +71,8 @@ p {
 }
 
 .badge {
-  width: 35mm;
-  height: 35mm;
+  width: 30mm;
+  height: 30mm;
   position: absolute;
   right: 10mm;
   bottom: 10mm;
@@ -86,10 +86,29 @@ p {
 .id {
   position: absolute;
   left: 10;
-  bottom: 1;
+  bottom: 10mm;
 }
 
 .name {
   font-size: 22px;
   font-weight: bold;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 25mm;
+  width: 25mm;
+}
+
+.left {
+  left: 5mm;
+}
+
+.right {
+  right: 5mm;
 }

@@ -73,7 +73,7 @@
 		]
 	},
 	{
-		"question": "கல்வெட்டுகளுடன் கூடிய குடைவரைகளை அதிகம் கொண்ட மாநிலம் எது? <br> Which state has the maximum rock-cut caves with inscriptions?",
+		"question": "பின்வருவனவற்றில் எது இந்தியாவின் பழமாயான குடைவரை “பராபர்” என அடையாளம் காண்க.<br> Which among the following is Barabar rock-cut cave, the earliest in India?",
 		"answers": [
 			{ "image": "./images/ques-10/op-1.jpg", "correct": false },
 			{ "image": "./images/ques-10/op-2.jpg", "correct": false },
