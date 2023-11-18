@@ -76,9 +76,7 @@
 		"question": "பின்வருவனவற்றில் எது இந்தியாவின் பழமாயான குடைவரை “பராபர்” என அடையாளம் காண்க.<br> Which among the following is Barabar rock-cut cave, the earliest in India?",
 		"answers": [
 			{ "image": "./images/ques-10/op-1.jpg", "correct": false },
-			{ "image": "./images/ques-10/op-2.jpg", "correct": false },
-			{ "image": "./images/ques-10/op-3.jpg", "correct": true },
-			{ "image": "./images/ques-10/op-4.jpg", "correct": false }
+			{ "image": "./images/ques-10/op-2.jpg", "correct": true }
 		]
 	},
 	{
@@ -109,12 +107,10 @@
 		]
 	},
 	{
-		"question": "சங்க காலத்தில் ஆட்சி செய்த பாண்டியர்களின் கொடியை அடையாளம் காணவும். <br> Identify the Pandyas flag who flourished during the Sangam age.",
+		"question": "சங்கப் புலவர் கணியன் பூங்குன்றனாரின் மேற்கோளை அடையாளம் காணவும். <br> Identify the quote of Sangam poet Kaniyan Poonkundranar.",
 		"answers": [
 			{ "image": "./images/ques-14/op-1.jpg", "correct": false },
-			{ "image": "./images/ques-14/op-2.jpg", "correct": false },
-			{ "image": "./images/ques-14/op-3.jpg", "correct": true },
-			{ "image": "./images/ques-14/op-4.jpg", "correct": false }
+			{ "image": "./images/ques-14/op-2.jpg", "correct": false }
 		]
 	},
 	{
