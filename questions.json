@@ -75,51 +75,44 @@
 	{
 		"question": "பின்வருவனவற்றில் எது இந்தியாவின் பழமாயான குடைவரை “பராபர்” என அடையாளம் காண்க.<br> Which among the following is Barabar rock-cut cave, the earliest in India?",
 		"answers": [
-			{ "image": "./images/ques-10/op-1.jpg", "correct": false },
-			{ "image": "./images/ques-10/op-2.jpg", "correct": true }
+			{ "image": "./images/ques-10/op-1.jpg", "correct": true },
+			{ "image": "./images/ques-10/op-2.jpg", "correct": false }
 		]
 	},
 	{
 		"question": "பின்வருவனவற்றில் கணியன் பூங்குன்றனாரின் படைப்புகள் இடம்பெற்றுள்ள சங்க இலக்கிய நூல் எது ? <br> Which among the following comprises the works of Kaniyan Poonkundranar?",
 		"answers": [
 			{ "image": "./images/ques-11/op-1.jpg", "correct": false },
-			{ "image": "./images/ques-11/op-2.jpg", "correct": false },
-			{ "image": "./images/ques-11/op-3.jpg", "correct": true },
-			{ "image": "./images/ques-11/op-4.jpg", "correct": false }
+			{ "image": "./images/ques-11/op-2.jpg", "correct": true },
+			{ "image": "./images/ques-11/op-3.jpg", "correct": false }
 		]
 	},
 	{
 		"question": "துவாரபாலிகா (பெண் காவலர்கள்) சிற்பங்களை அடையாளம் காணவும். <br> Identify the dvarapalika (female guards) sculptures.",
 		"answers": [
 			{ "image": "./images/ques-12/op-1.jpg", "correct": false },
-			{ "image": "./images/ques-12/op-2.jpg", "correct": false },
-			{ "image": "./images/ques-12/op-3.jpg", "correct": true },
-			{ "image": "./images/ques-12/op-4.jpg", "correct": false }
+			{ "image": "./images/ques-12/op-2.jpg", "correct": true }
 		]
 	},
 	{
 		"question": "பின்வருவனவற்றில் சித்தன்னவாசல் ஓவியங்களை அடையாளம் காணவும். <br> Identify the Sittanavasal paintings among the following.",
 		"answers": [
-			{ "image": "./images/ques-13/op-1.jpg", "correct": false },
-			{ "image": "./images/ques-13/op-2.jpg", "correct": false },
-			{ "image": "./images/ques-13/op-3.jpg", "correct": true },
-			{ "image": "./images/ques-13/op-4.jpg", "correct": false }
+			{ "image": "./images/ques-13/op-1.jpg", "correct": true },
+			{ "image": "./images/ques-13/op-2.jpg", "correct": false }
 		]
 	},
 	{
 		"question": "சங்கப் புலவர் கணியன் பூங்குன்றனாரின் மேற்கோளை அடையாளம் காணவும். <br> Identify the quote of Sangam poet Kaniyan Poonkundranar.",
 		"answers": [
 			{ "image": "./images/ques-14/op-1.jpg", "correct": false },
-			{ "image": "./images/ques-14/op-2.jpg", "correct": false }
+			{ "image": "./images/ques-14/op-2.jpg", "correct": true }
 		]
 	},
 	{
 		"question": "பின்வருவனவற்றிலிருந்து புடைப்புச் சிற்பம்  அடையாளம் காணவும். <br> Identify the bas-relief from the following.",
 		"answers": [
-			{ "image": "./images/ques-15/op-1.jpg", "correct": false },
-			{ "image": "./images/ques-15/op-2.jpg", "correct": false },
-			{ "image": "./images/ques-15/op-3.jpg", "correct": true },
-			{ "image": "./images/ques-15/op-4.jpg", "correct": false }
+			{ "image": "./images/ques-15/op-1.jpg", "correct": true },
+			{ "image": "./images/ques-15/op-2.jpg", "correct": false }
 		]
 	}
 ]
