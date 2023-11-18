@@ -10,7 +10,6 @@ const app = express();
 const User = require("./model/User");
 
 (async () => {
-	console.log(process.env.DATABASE_URI);
 	try {
 		const { connection } = await mongoose.connect(process.env.DATABASE_URI);
 		console.log(`Database connected (${connection.host})`);
