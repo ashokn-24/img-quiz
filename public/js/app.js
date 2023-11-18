@@ -1,4 +1,5 @@
 import startTimer from "/js/timer.js";
+import { ENDPOINT } from "/js/endpoint.js";
 
 const qusElement = document.querySelector(".question");
 const ansBtn = document.querySelector(".ans-btn");
@@ -19,7 +20,7 @@ document.addEventListener("DOMContentLoaded", getQuestions);
 
 async function getQuestions() {
 	try {
-		const res = await fetch("http://localhost:5000/questions");
+		const res = await fetch(ENDPOINT);
 		const q = await res.json();
 		questions = [...q];
 		showQuestion();
@@ -81,7 +82,7 @@ function showQuestion() {
 			img.classList.add("d-flex");
 			img.classList.add("gap-3");
 			img.classList.add("col-lg-3");
-			// 
+			//
 
 			if (answer.correct) {
 				img.dataset.correct = "true";
