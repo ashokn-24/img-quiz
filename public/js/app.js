@@ -8,7 +8,8 @@ const qrImage = document.getElementById("qr-section");
 const gradeCard = document.querySelector("#grade-card");
 const timerElement = document.getElementById("time");
 
-const ONE_MINUTE_MILLISECONDS = 1000 * 5;
+const ONE_MINUTE_MILLISECONDS = 1000 * 60;
+const FIVE_MINUTES_MILLISECONDS = ONE_MINUTE_MILLISECONDS * 5;
 
 let currentQueIndex = 0;
 let correctAnswerCount = 0;
@@ -22,7 +23,7 @@ async function getQuestions() {
 		const q = await res.json();
 		questions = [...q];
 		showQuestion();
-		startTimer(ONE_MINUTE_MILLISECONDS, timerElement, () => {
+		startTimer(FIVE_MINUTES_MILLISECONDS, timerElement, () => {
 			currentQueIndex = 15;
 			showQuestion();
 		});

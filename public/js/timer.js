@@ -15,8 +15,8 @@ function startTime(duration, element, cb) {
 }
 
 function displayTimer(duration, element) {
-	let seconds = duration / 1000;
-	let minutes = Math.floor(seconds / 60);
+	let seconds = Math.floor((duration % (1000 * 60)) / 1000);
+	let minutes = Math.floor((duration % (1000 * 60 * 60)) / (1000 * 60));
 
 	if (seconds < 10) {
 		seconds = `0${seconds}`;
