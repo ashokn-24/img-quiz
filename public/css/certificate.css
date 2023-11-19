@@ -13,8 +13,8 @@ body {
 
 .border-pattern {
   position: relative;
-  height: 202mm;
-  width: 267mm;
+  height: 220mm;
+  width: 80%;
   border: 1mm solid #991B1B;
   /* http://www.heropatterns.com/ */
   background-color: #ffffff;
@@ -25,8 +25,8 @@ body {
   position: absolute;
   left: 10mm;
   top: 10mm;
-  height: 180mm;
-  width: 245mm;
+  height: 198mm;
+  width: 92%;
   border: 1mm solid #991B1B;
   background: white;
 }
@@ -35,7 +35,7 @@ body {
   border: 1mm solid #991B1B;
   margin: 4mm;
   padding: 10mm;
-  height: 150mm;
+  height: 168mm;
   text-align: center;
 }
 
@@ -50,14 +50,7 @@ h2 {
   margin-top: 0;
   padding-bottom: 1mm;
   display: inline-block;
-  border-bottom: 1mm solid #991B1B;
-}
-
-h2::after {
-  content: "";
-  display: block;
-  padding-bottom: 4mm;
-  border-bottom: 1mm solid #991B1B;
+  margin-bottom: 2px;
 }
 
 h3 {
@@ -83,12 +76,6 @@ p {
   display: none;
 }
 
-.id {
-  position: absolute;
-  left: 10;
-  bottom: 10mm;
-}
-
 .name {
   font-size: 22px;
   font-weight: bold;
@@ -111,4 +98,18 @@ p {
 
 .right {
   right: 5mm;
+}
+
+.signature {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5rem;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
 }
