@@ -110,9 +110,9 @@ async function generateCertificate(res, { email, name, institution }) {
 	const fileContent = await readFile(pdfPath);
 
 	const attachment = {
-		filename: "certificate.pdf", // Name of the attached file
-		content: fileContent, // Content of the attachment (use buffer or stream for a file)
-		encoding: "base64" // Use 'base64' encoding for binary data (e.g., PDF)
+		filename: "certificate.pdf",
+		content: fileContent,
+		encoding: "base64"
 	};
 
 	sendMail(cert, attachment);
@@ -131,7 +131,8 @@ async function generatePDF(certificate, id) {
 			height: 720
 		},
 		args: ["--disable-web-security"],
-		headless: true
+		headless: true,
+		executablePath: process.env.CHROME_DRIVER_EXE_PATH
 	});
 	const page = await browser.newPage();
 	const path = `${__dirname}/certificates/${id}.pdf`;
