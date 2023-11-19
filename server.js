@@ -130,7 +130,7 @@ async function generatePDF(certificate, id) {
 			width: 1524,
 			height: 720
 		},
-		args: ["--disable-web-security"],
+		args: ["--disable-web-security", "--no-sandbox"],
 		headless: true
 	});
 	const page = await browser.newPage();
