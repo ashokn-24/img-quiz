@@ -12,7 +12,7 @@ const timerElement = document.getElementById("time");
 const ONE_MINUTE_MILLISECONDS = 1000 * 60;
 const FIVE_MINUTES_MILLISECONDS = ONE_MINUTE_MILLISECONDS * 5;
 
-let currentQueIndex = 15;
+let currentQueIndex = 0;
 let correctAnswerCount = 0;
 let questions = [];
 
