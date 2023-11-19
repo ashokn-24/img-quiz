@@ -131,8 +131,7 @@ async function generatePDF(certificate, id) {
 			height: 720
 		},
 		args: ["--disable-web-security"],
-		headless: true,
-		executablePath: process.env.CHROME_DRIVER_EXE_PATH
+		headless: true
 	});
 	const page = await browser.newPage();
 	const path = `${__dirname}/certificates/${id}.pdf`;
