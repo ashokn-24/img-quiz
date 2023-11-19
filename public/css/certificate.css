@@ -114,3 +114,7 @@ p {
   align-items: flex-start;
   gap: 5px;
 }
+
+.center {
+  align-items: center;
+}

@@ -121,6 +121,10 @@ p {
   align-items: flex-start;
   gap: 5px;
 }
+
+.center {
+  align-items: center;
+}
     </style>
 		<title>E-Certificate</title>
 	</head>
@@ -156,7 +160,10 @@ p {
 								<span>Place: <strong>Madurai</strong></span>
 								<span>Date: <strong>${date}</strong></span>
 							</div>
-							<div class="id"><strong>Superintending Archaeologist</strong></div>
+							<div class="flex center">
+								<strong>A.ANIL KUMAR</strong>
+								<strong>Superintending Archaeologist</strong>
+							</div>
 						</div>
 					</div>
 				</div>
