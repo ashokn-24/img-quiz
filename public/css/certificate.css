@@ -85,6 +85,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
 .logo {
@@ -102,7 +103,7 @@ p {
 
 .signature {
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: space-between;
   margin-top: 5rem;
 }

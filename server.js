@@ -75,7 +75,13 @@ app.get("/quiz", (req, res) => {
 });
 
 app.get("/certificate", (req, res) => {
-	res.render("certificate", { username: "Abhishek P", institution:"Anna University" });
+	const date = new Date(Date.now());
+	const dateFormat = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+	res.render("certificate", {
+		username: "Abhishek P",
+		institution: "Anna University",
+		date: dateFormat
+	});
 });
 
 app.listen(5000, () => {
