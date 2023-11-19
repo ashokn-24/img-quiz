@@ -1,4 +1,5 @@
 import startTimer from "/js/timer.js";
+import unload from "/js/unload.js";
 import { ENDPOINT } from "/js/endpoint.js";
 
 const qusElement = document.querySelector(".question");
@@ -27,6 +28,7 @@ async function getQuestions() {
 		startTimer(FIVE_MINUTES_MILLISECONDS, timerElement, () => {
 			currentQueIndex = 15;
 			showQuestion();
+			unload();
 		});
 	} catch (err) {
 		console.log(err);
@@ -57,11 +59,13 @@ function showQuestion() {
         <h3>Congratulations, You've got ${correctAnswerCount} questions right out of ${
 			questions.length
 		} questions.!</h3>
-        <p class="text-center fw-large text-success " style="font-size:22px; font-weight:bold;">${getGrade(correctAnswerCount)}</p>
-        <div class="d-grid">
-          <a href="/form" class="btn btn-primary">Generate E-Certificate</a>
-        </div>
-      </div>
+        <p class="text-center fw-large text-success p-5" style="font-size:22px; font-weight:bold;">${getGrade(correctAnswerCount)}</p>
+			<div>
+				<div class="d-grid"> 
+					<a href="/form" class="btn btn-primary">Generate E-Certificate</a>
+				</div>
+			</div>
+	  </div>
     `;
 
 		gradeCard.innerHTML = template;

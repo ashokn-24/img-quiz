@@ -77,7 +77,6 @@ app.get("/certificate", (req, res) => {
 	res.render("certificate", {
 		username: "Abhishek P",
 		institution: "Anna University",
-		date: dateFormat
 	});
 });
 

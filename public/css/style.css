@@ -24,6 +24,7 @@ body {
     background-blend-mode: overlay;
     background-size:cover;
     background-position: top;
+    flex-direction: column;
 }
 
 header {

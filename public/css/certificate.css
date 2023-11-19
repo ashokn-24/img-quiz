@@ -9,6 +9,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .border-pattern {
@@ -117,4 +118,21 @@ p {
 
 .center {
   align-items: center;
+}
+
+.exit-btn{
+  font-family: sans-serif;
+  background-color: #0D6EFD;
+  color: #FFFFFF;
+  padding: 17px 50px;
+  border: 5px solid #0D6EFD;
+  border-radius: 5px;
+  text-decoration: none;  
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.btn{
+  margin: 40px;
 }
