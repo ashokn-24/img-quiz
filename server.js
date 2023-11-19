@@ -75,7 +75,7 @@ app.get("/quiz", (req, res) => {
 });
 
 app.get("/certificate", (req, res) => {
-	res.render("certificate", { username: "Abhishek P" });
+	res.render("certificate", { username: "Abhishek P", institution:"Anna University" });
 });
 
 app.listen(5000, () => {
