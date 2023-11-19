@@ -13,6 +13,7 @@ const app = express();
 const User = require("./model/User");
 const Certificate = require("./model/Certificate");
 const getCertificate = require("./certificate");
+const validateCertificateForm = require("./middlewares/validator");
 
 (async () => {
 	try {
@@ -40,31 +41,11 @@ app.get("/questions", (req, res) => {
 	res.sendFile(__dirname + "/questions.json");
 });
 
-app.post("/form", async (req, res) => {
+app.post("/form", validateCertificateForm, async (req, res) => {
 	const name = req.body.name;
 	const email = req.body.email;
 	const mobileNo = req.body.mobile;
 	const institution = req.body.institution;
-
-	const existingUser = await User.findOne({ email });
-
-	if (existingUser) {
-		return res.render("errors/form", {
-			error: true,
-			errorMsg: "Email Id already exists",
-			name,
-			email,
-			mobileNo
-		});
-	}
-
-	const user = new User({
-		name,
-		email,
-		mobileNo
-	});
-
-	const savedUser = await user.save();
 
 	await generateCertificate(res, { email, name, institution });
 });
@@ -73,6 +54,7 @@ app.get("/quiz", (req, res) => {
 	res.render("quiz");
 });
 
+<<<<<<< HEAD
 app.get("/certificate", (req, res) => {
 	res.render("certificate", {
 		username: "Abhishek P",
@@ -80,6 +62,8 @@ app.get("/certificate", (req, res) => {
 	});
 });
 
+=======
+>>>>>>> 352bcbaaa1752e516520a51981c54eade9fd826e
 app.listen(5000, () => {
 	console.log("Server started on port 5000");
 });
@@ -109,9 +93,9 @@ async function generateCertificate(res, { email, name, institution }) {
 	const fileContent = await readFile(pdfPath);
 
 	const attachment = {
-		filename: "certificate.pdf", // Name of the attached file
-		content: fileContent, // Content of the attachment (use buffer or stream for a file)
-		encoding: "base64" // Use 'base64' encoding for binary data (e.g., PDF)
+		filename: "certificate.pdf",
+		content: fileContent,
+		encoding: "base64"
 	};
 
 	sendMail(cert, attachment);
@@ -129,7 +113,7 @@ async function generatePDF(certificate, id) {
 			width: 1524,
 			height: 720
 		},
-		args: ["--disable-web-security"],
+		args: ["--disable-web-security", "--no-sandbox"],
 		headless: true
 	});
 	const page = await browser.newPage();
