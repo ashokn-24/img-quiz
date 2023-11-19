@@ -31,19 +31,9 @@
 								name="name"
 								value="<%= name %>"
 							/>
+							<p class="text-danger"><%= nameError %></p>
 						</div>
 						<div class="mb-3">
-							<% if (error) { %>
-							<label for="email-input">Email<sup class="text-danger">*</sup></label>
-							<input
-								type="text"
-								class="form-control border-danger text-danger"
-								id="email-input"
-								name="email"
-								value="<%= email %>"
-							/>
-							<p class="text-danger"><%= errorMsg %></p>
-							<% } else { %>
 							<label for="email-input">Email<sup class="text-danger">*</sup></label>
 							<input
 								type="text"
@@ -52,8 +42,7 @@
 								name="email"
 								value="<%= email %>"
 							/>
-							<p><%= errorMsg %></p>
-							<% } %>
+							<p class="text-danger"><%= emailError %></p>
 						</div>
 						<div class="mb-3">
 							<label for="mobile-input">Mobile (Optional)</label>
@@ -62,8 +51,20 @@
 								class="form-control"
 								id="mobile-input"
 								name="mobile"
-								value="<%= mobileNo %>"
+								value="<%= mobile %>"
 							/>
+							<p class="text-danger"><%= mobileError %></p>
+						</div>
+						<div class="mb-3">
+							<label for="institution-input">Institution</label>
+							<input
+								type="text"
+								class="form-control"
+								id="institution-input"
+								name="institution"
+								value="<%= institution %>"
+							/>
+							<p class="text-danger"><%= institutionError %></p>
 						</div>
 						<div class="d-grid">
 							<button class="btn btn-primary">Submit</button>

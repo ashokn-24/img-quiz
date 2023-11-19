@@ -13,6 +13,7 @@ const app = express();
 const User = require("./model/User");
 const Certificate = require("./model/Certificate");
 const getCertificate = require("./certificate");
+const validateCertificateForm = require("./middlewares/validator");
 
 (async () => {
 	try {
@@ -40,45 +41,17 @@ app.get("/questions", (req, res) => {
 	res.sendFile(__dirname + "/questions.json");
 });
 
-app.post("/form", async (req, res) => {
+app.post("/form", validateCertificateForm, async (req, res) => {
 	const name = req.body.name;
 	const email = req.body.email;
 	const mobileNo = req.body.mobile;
 	const institution = req.body.institution;
-
-	const existingUser = await User.findOne({ email });
-
-	if (existingUser) {
-		return res.render("errors/form", {
-			error: true,
-			errorMsg: "Email Id already exists",
-			name,
-			email,
-			mobileNo
-		});
-	}
-
-	const user = new User({
-		name,
-		email,
-		mobileNo
-	});
-
-	const savedUser = await user.save();
 
 	await generateCertificate(res, { email, name, institution });
 });
 
 app.get("/quiz", (req, res) => {
 	res.render("quiz");
-});
-
-app.get("/certificate", (req, res) => {
-	res.render("certificate", {
-		username: "Abhishek P",
-		institution: "Anna University",
-		date: dateFormat
-	});
 });
 
 app.listen(5000, () => {
