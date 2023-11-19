@@ -12,7 +12,7 @@ const timerElement = document.getElementById("time");
 const ONE_MINUTE_MILLISECONDS = 1000 * 60;
 const FIVE_MINUTES_MILLISECONDS = ONE_MINUTE_MILLISECONDS * 5;
 
-let currentQueIndex = 0;
+let currentQueIndex = 15;
 let correctAnswerCount = 0;
 let questions = [];
 
@@ -57,7 +57,7 @@ function showQuestion() {
         <h3>Congratulations, You've got ${correctAnswerCount} questions right out of ${
 			questions.length
 		} questions.!</h3>
-        <span>${getGrade(correctAnswerCount)}</span>
+        <p class="text-center fw-large text-success " style="font-size:22px; font-weight:bold;">${getGrade(correctAnswerCount)}</p>
         <div class="d-grid">
           <a href="/form" class="btn btn-primary">Generate E-Certificate</a>
         </div>

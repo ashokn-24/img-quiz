@@ -25,14 +25,6 @@
 		]
 	},
 	{
-		"question": "(கழுகுமலை) வெட்டுத்தளி  வகை கட்டிடக்கலையை அடையாளம் காணவும் <br>Identify the (Kazhukumalai) Cut-out type of Architecture?",
-		"answers": [
-			{ "image": "./images/ques-4/op-1.jpg", "correct": false },
-			{ "image": "./images/ques-4/op-2.jpg", "correct": false },
-			{ "image": "./images/ques-4/op-3.jpg", "correct": true }
-		]
-	},
-	{
 		"question": "குடுமியான்மலையிலிருந்து “பிரிவதினிதா” கல்வெட்டை அடையாளம் காணவும் <br> Identify the “privathinitha” inscription from Kudumiyanmalai?",
 		"answers": [
 			{ "image": "./images/ques-5/op-1.jpg", "correct": true },
@@ -46,6 +38,14 @@
 			{ "image": "./images/ques-6/op-1.jpg", "correct": false },
 			{ "image": "./images/ques-6/op-2.jpg", "correct": true },
 			{ "image": "./images/ques-6/op-3.jpg", "correct": false }
+		]
+	},
+	{
+		"question": "(கழுகுமலை) வெட்டுத்தளி  வகை கட்டிடக்கலையை அடையாளம் காணவும் <br>Identify the (Kazhukumalai) Cut-out type of Architecture?",
+		"answers": [
+			{ "image": "./images/ques-4/op-1.jpg", "correct": false },
+			{ "image": "./images/ques-4/op-2.jpg", "correct": false },
+			{ "image": "./images/ques-4/op-3.jpg", "correct": true }
 		]
 	},
 	{
