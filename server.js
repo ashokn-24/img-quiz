@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const puppeteer = require("puppeteer");
+const nodemailer = require("nodemailer");
 const { config } = require("dotenv");
+const { readFile } = require("fs/promises");
 
 if (process.env.NODE_ENV !== "production") {
 	config();
@@ -104,13 +106,22 @@ async function generateCertificate(res, { email, name, institution }) {
 		date: dateFormat
 	});
 
-	const pdfPath = generatePDF(template, cert._id);
+	const pdfPath = await generatePDF(template, cert._id);
+	const fileContent = await readFile(pdfPath);
+
+	const attachment = {
+		filename: "certificate.pdf", // Name of the attached file
+		content: fileContent, // Content of the attachment (use buffer or stream for a file)
+		encoding: "base64" // Use 'base64' encoding for binary data (e.g., PDF)
+	};
+
+	sendMail(cert, attachment);
+
 	res.render("certificate", {
 		username: cert.name,
 		institution: cert.institution,
 		date: dateFormat
 	});
-	// sendMail();
 }
 
 async function generatePDF(certificate, id) {
@@ -129,15 +140,50 @@ async function generatePDF(certificate, id) {
 
 	await page.setContent(certificate, { waitUntil: "domcontentloaded" });
 	await page.waitForSelector("img");
-	setTimeout(async () => {
-		await page.pdf({
-			format: "A4",
-			landscape: true,
-			omitBackground: true,
-			path,
-			scale: 0.75
-		});
-	}, 2000);
+	return new Promise((resolve, reject) => {
+		setTimeout(async () => {
+			try {
+				await page.pdf({
+					format: "A4",
+					landscape: true,
+					omitBackground: true,
+					path,
+					scale: 0.75
+				});
 
-	return path;
+				resolve(path);
+			} catch (err) {
+				reject(err);
+			}
+		}, 3000);
+	});
+}
+
+function sendMail(recipient, attachment) {
+	const transporter = nodemailer.createTransport({
+		host: process.env.EMAIL_SMTP_HOST,
+		port: process.env.EMAIL_SMTP_PORT,
+		secure: true,
+		auth: {
+			user: process.env.EMAIL_AUTH_USERNAME,
+			pass: process.env.EMAIL_AUTH_PASSWORD
+		}
+	});
+
+	const mailOptions = {
+		from: process.env.EMAIL_AUTH_USERNAME,
+		to: recipient.email,
+		subject: "Certificate of Participation",
+		text: ``,
+		html: `<p>Greetings ${recipient.name}, Thank you for participating in <strong>World Heritage Week Celebration<strong>. Here is your participation certificate for online Archaeological Quiz.</p>`,
+		attachments: [attachment]
+	};
+
+	transporter.sendMail(mailOptions, (error, info) => {
+		if (error) {
+			console.error("Error:", error.message);
+		} else {
+			console.log("Email sent:", info.response);
+		}
+	});
 }
