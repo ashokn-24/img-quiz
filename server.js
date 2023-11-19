@@ -10,6 +10,7 @@ if (process.env.NODE_ENV !== "production") {
 const app = express();
 const User = require("./model/User");
 const Certificate = require("./model/Certificate");
+const getCertificate = require("./certificate");
 
 (async () => {
 	try {
@@ -41,6 +42,7 @@ app.post("/form", async (req, res) => {
 	const name = req.body.name;
 	const email = req.body.email;
 	const mobileNo = req.body.mobile;
+	const institution = req.body.institution;
 
 	const existingUser = await User.findOne({ email });
 
@@ -62,12 +64,7 @@ app.post("/form", async (req, res) => {
 
 	const savedUser = await user.save();
 
-	// TODO: Encrypt later
-	res.cookie("user", JSON.stringify(savedUser), {
-		httpOnly: true
-	});
-
-	res.render("certificate", { username: user.name });
+	await generateCertificate(res, { email, name, institution });
 });
 
 app.get("/quiz", (req, res) => {
@@ -75,8 +72,6 @@ app.get("/quiz", (req, res) => {
 });
 
 app.get("/certificate", (req, res) => {
-	const date = new Date(Date.now());
-	const dateFormat = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
 	res.render("certificate", {
 		username: "Abhishek P",
 		institution: "Anna University",
@@ -88,7 +83,7 @@ app.listen(5000, () => {
 	console.log("Server started on port 5000");
 });
 
-async function generateCertificate({ email, name, institution }) {
+async function generateCertificate(res, { email, name, institution }) {
 	const certificate = await Certificate.findOne({ email });
 
 	if (certificate) return;
@@ -99,21 +94,50 @@ async function generateCertificate({ email, name, institution }) {
 		institution
 	});
 
+	const date = new Date(Date.now());
+	const dateFormat = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
+
 	const cert = await newCertificate.save();
-	const template = generatePDF();
+	const template = getCertificate({
+		name: cert.name,
+		institution: cert.institution,
+		date: dateFormat
+	});
+
+	const pdfPath = generatePDF(template, cert._id);
+	res.render("certificate", {
+		username: cert.name,
+		institution: cert.institution,
+		date: dateFormat
+	});
+	// sendMail();
 }
 
 async function generatePDF(certificate, id) {
-	const browser = await puppeteer.launch();
+	const browser = await puppeteer.launch({
+		defaultViewport: {
+			width: 1524,
+			height: 720
+		},
+		args: ["--disable-web-security"],
+		headless: true
+	});
 	const page = await browser.newPage();
 	const path = `${__dirname}/certificates/${id}.pdf`;
 
-	await page.setContent(certificate);
-	await page.pdf({
-		format: "A4",
-		omitBackground: true,
-		path
-	});
+	page.on("console", msg => console.log("PAGE LOG:", msg.text()));
+
+	await page.setContent(certificate, { waitUntil: "domcontentloaded" });
+	await page.waitForSelector("img");
+	setTimeout(async () => {
+		await page.pdf({
+			format: "A4",
+			landscape: true,
+			omitBackground: true,
+			path,
+			scale: 0.75
+		});
+	}, 2000);
 
 	return path;
 }
