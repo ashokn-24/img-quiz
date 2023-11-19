@@ -54,7 +54,6 @@ app.get("/quiz", (req, res) => {
 	res.render("quiz");
 });
 
-<<<<<<< HEAD
 app.get("/certificate", (req, res) => {
 	res.render("certificate", {
 		username: "Abhishek P",
@@ -62,8 +61,6 @@ app.get("/certificate", (req, res) => {
 	});
 });
 
-=======
->>>>>>> 352bcbaaa1752e516520a51981c54eade9fd826e
 app.listen(5000, () => {
 	console.log("Server started on port 5000");
 });
