@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const puppeteer = require("puppeteer");
 const { config } = require("dotenv");
 
 if (process.env.NODE_ENV !== "production") {
@@ -8,6 +9,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const app = express();
 const User = require("./model/User");
+const Certificate = require("./model/Certificate");
 
 (async () => {
 	try {
@@ -80,6 +82,32 @@ app.listen(5000, () => {
 	console.log("Server started on port 5000");
 });
 
-async function generateCertificate() {
-	//
+async function generateCertificate({ email, name, institution }) {
+	const certificate = await Certificate.findOne({ email });
+
+	if (certificate) return;
+
+	const newCertificate = new Certificate({
+		name,
+		email,
+		institution
+	});
+
+	const cert = await newCertificate.save();
+	const template = generatePDF();
+}
+
+async function generatePDF(certificate, id) {
+	const browser = await puppeteer.launch();
+	const page = await browser.newPage();
+	const path = `${__dirname}/certificates/${id}.pdf`;
+
+	await page.setContent(certificate);
+	await page.pdf({
+		format: "A4",
+		omitBackground: true,
+		path
+	});
+
+	return path;
 }
