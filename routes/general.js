@@ -3,6 +3,7 @@ const router = Router();
 
 const validateCertificateForm = require("../middlewares/validator");
 const generateCertificate = require("../helpers/generateCertificate");
+const { BASE_PATH } = require("../path");
 
 router.get("/", (req, res) => {
 	res.render("index");
@@ -13,7 +14,7 @@ router.get("/form", (req, res) => {
 });
 
 router.get("/questions", (req, res) => {
-	res.sendFile(__dirname + "/questions.json");
+	res.sendFile(`${BASE_PATH}/questions.json`);
 });
 
 router.post("/form", validateCertificateForm, async (req, res) => {
