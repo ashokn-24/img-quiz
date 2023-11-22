@@ -28,15 +28,15 @@ async function generateCertificate(res, { email, name, institution }) {
 	});
 
 	const pdfPath = await generatePDF(template, cert.id);
-	// const fileContent = await readFile(pdfPath);
+	const fileContent = await readFile(pdfPath);
 
-	// const attachment = {
-	// 	filename: "certificate.pdf",
-	// 	content: fileContent,
-	// 	encoding: "base64"
-	// };
+	const attachment = {
+		filename: "certificate.pdf",
+		content: fileContent,
+		encoding: "base64"
+	};
 
-	// sendMail(cert, attachment);
+	sendMail(cert, attachment);
 
 	res.render("certificate", {
 		username: cert.name,
