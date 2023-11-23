@@ -1,4 +1,6 @@
 function getCertificate({ name, institution, date }) {
+	const signatureLocation = `${process.env.HOST}/images/signature.png`;
+
 	let template = `
     <!DOCTYPE html>
 <html lang="en">
@@ -112,7 +114,7 @@ p {
   display: flex;
   align-items: end;
   justify-content: space-between;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 .flex {
@@ -173,6 +175,7 @@ p {
 								<span>Date: <strong>${date}</strong></span>
 							</div>
 							<div class="flex center">
+                <img src="${signatureLocation}" alt="signature" height="70px" />
 								<strong>A.ANIL KUMAR</strong>
 								<strong>Superintending Archaeologist</strong>
 							</div>

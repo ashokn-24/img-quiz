@@ -25,6 +25,14 @@ router.post("/form", validateCertificateForm, async (req, res) => {
 	await generateCertificate(res, { email, name, institution });
 });
 
+router.get("/certificate", (req, res) => {
+	res.render("certificate", {
+		username: "Abhishek",
+		institution: "Anna University",
+		date: new Date().toLocaleString("en-GB")
+	});
+});
+
 router.get("/quiz", (req, res) => {
 	res.render("quiz");
 });
